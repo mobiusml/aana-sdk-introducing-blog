@@ -61,7 +61,7 @@
 	<meta property="og:title" content="Introducing Aana: The Open-Source Powerhouse for Multimodal Applications">
 	<meta property="og:description"
 		content="Launch blog of Aana SDK.">
-	<meta property="og:image" content="https://mobiusml.github.io/batched_whisper_blog/figs/aana_whisper_hqq_compile.png">
+	<meta property="og:image" content="https://mobiusml.github.io/batched_whisper_blog/figs/aana_sdk.png">
 	<meta property="og:url" content="https://mobiusml.github.io/batched_whisper_blog/">
 	<meta property="og:type" content="article">
 
@@ -70,7 +70,7 @@
 	<meta name="twitter:title" content="Introducing Aana: The Open-Source Powerhouse for Multimodal Applications">
 	<meta name="twitter:description"
 		content="Launch blog of Aana SDK.">
-	<meta name="twitter:image" content=https://mobiusml.github.io/batched_whisper_blog/figs/aana_whisper_hqq_compile.png">
+	<meta name="twitter:image" content=https://mobiusml.github.io/batched_whisper_blog/figs/aana_sdk.png">
 	<meta name="twitter:creator" content="@appughar">
 
 	<!-- Meta tags for article publishing date and modification date -->
@@ -108,12 +108,23 @@
 			<hr />
 			<h2 id="intro" class="">Introduction</h2>
 
-			<p>The landscape of Artificial Intelligence is rapidly evolving, with multimodal AI at the forefront of this revolution as we stand on the cusp of a new era in technology. It's becoming increasingly clear that multimodal AI will be a cornerstone of the Generative AI stack. The ability to process and understand multiple types of data - text, images, audio, and video - simultaneously is opening doors to a new class of applications that were once the stuff of science fiction. For example, we can now achieve rich understanding of video content, enabling applications to analyze and interpret complex scenes, recognize objects and actions, transcribe speech, and even understand context and emotions, as demonstrated in this <a href="https://aana-staging.mobiuslabs.com/">demo</a></p>
+			<p>The landscape of Artificial Intelligence is rapidly evolving, with multimodal AI at the forefront of this revolution as we stand on the cusp of a new era in technology. It's becoming increasingly clear that multimodal AI will be a cornerstone of the Generative AI stack. The ability to process and understand multiple types of data - text, images, audio, and video - simultaneously is opening doors to a new class of applications that were once the stuff of science fiction. For example, we can now achieve rich understanding of video content, enabling applications to analyze and interpret complex scenes, recognize objects and actions, transcribe speech, and even understand context and emotions.</p>
+			
+			<div class="column-list">
+				<div style="width:100%; display: flex; justify-content: center; align-items: end;" class="column">
+					
+					<div><img src="./figs/aana_intro.gif" /></div>
+					<div class="caption" style="width:20%; font-size: smaller; padding-left: 10px; padding-bottom: 20px;"><b>Fig 1.</b> An example of video understanding. The code for implement the backend using Aana SDK is available <a href="https://github.com/mobiusml/aana_sdk/tree/main/aana/projects/chat_with_video">here</a></div></p>
+				</div>
+			</div>
 
 			<p>At Mobius Labs, we have years of experience working in computer vision, audio recognition, and multimodal applications, delivering strong AI capabilities to our enterprise customers. Therefore, we understand the challenges that come with this new frontier. Managing diverse inputs, scaling Generative AI applications, and ensuring extensibility are major hurdles that developers face today. That's why we're thrilled to announce the release of Aana SDK, our open-source software development kit designed to address these challenges head-on.
 			</p>
 
-			<p>Aana SDK, named after the Malayalam word for "elephant" ("ആന" - pronounced "Aana"), is the core infrastructure that supports all our major applications. This name symbolizes strength and intelligence, much like the foundational role the SDK plays in our AI solutions. It serves as the robust foundation upon which we've built our suite of AI-powered solutions. By open-sourcing Aana SDK, we're sharing the fruits of our labor and expertise with the wider developer community, enabling others to build powerful multimodal AI applications with greater ease and efficiency.</p>
+			<p>Aana SDK, named after the Malayalam word for "elephant" ("ആന" - pronounced "Aana"), is the core infrastructure that supports all our major applications. It serves as the robust infrastructure layer upon which we've built our suite of AI-powered solutions. By open-sourcing Aana SDK, we're sharing the fruits of our labor and expertise with the wider developer community, enabling others to build powerful multimodal AI applications with greater ease and efficiency.</p>
+
+			<p>Visit our GitHub repository <a href="https://github.com/mobiusml/aana_sdk">https://github.com/mobiusml/aana_sdk</a> or simply <code>pip install aana</code> to get started with Aana today. Join us in shaping the future of machine learning deployment and application development!</p>
+
 
 			<!-- <div class="column-list">
 				<div style="width:49%" class="column">
@@ -144,7 +155,7 @@
 				<div style="width:32%" class="column">
 					<!-- <p class="page-description"><img src="./baby_aana.png" /></p> -->
 					<figure class="image" style="text-align:left"><a href="figs/aana_whisper_hqq_compile.png"><img style="width:240px"
-								src="figs/aana_whisper_hqq_compile.png" /></a>
+								src="figs/aana_sdk.png" /></a>
 					</figure>
 					<p>
 						<strong>Table of Contents</strong>
@@ -212,25 +223,43 @@
 					<li>Ease of Use: Complex doesn't have to mean complicated. Aana's modular design, with extensive automation and abstraction, makes it accessible to developers of all skill levels.</li>
 					</ol>
 
+					<h2>Why Open Source?</h2>
+
+					<p>Open-source models are increasingly dominating state-of-the-art multimodal benchmarks. We believe this trend will continue in Enterprise AI, offering greater transparency, privacy, and freedom from vendor lock-in. This shift mirrors the adoption of Linux and Android in their respective domains.</p>
+
+					<p>By open-sourcing Aana SDK, we're aligning with this trend, empowering businesses and developers to leverage cutting-edge AI while maintaining control over their technology stack. We believe that this open-source approach will significantly simplify the process of bringing cutting-edge machine learning models into production environments. Whether you're working on a small-scale project or developing enterprise-grade applications, Aana SDK provides the flexibility and scalability you need. If you are developer we are eager to learn more on how you are using it and if you are company that wants GenAI in your stack you can contact us at <a href="mailto:support@mobiuslabs.com" />support@mobiuslabs.com</a></p>
+					
+
+					<h2 id="open-souce">Why use a Permissive License?</h2>
+					<p>We believe in the power of collaboration and open innovation. That's why we're excited to announce that we are open-sourcing Aana SDK under the permissive Apache license. This decision reflects our commitment to advancing the field of AI and empowering developers worldwide.</p>
+
+					<p>The choice of a permissive license is crucial for fostering innovation, collaboration, and adoption:</p>
+					
+					<dl>
+					<dt>Foster Innovation</dt> 
+					<dd>With the Apache license, you can use, modify, and distribute Aana SDK without worrying about legal red tape. Want to experiment with a new feature or adapt the SDK for a unique use case? Go for it. Your innovations are yours to keep - no need to disclose your source code.
+					</dd>
+					<dt>Encourage Collaboration</dt> 
+					<dd>We believe the best ideas come from collaboration. The permissive license means you can share your improvements, contribute to the core SDK, or build plugins without fear of IP conflicts. Let's solve complex AI challenges together and create something greater than the sum of its parts. Looking foward to seeing your pull requests. 
+					</dd>					
+					<dt>Promote Adoption</dt> 
+					<dd>Whether you're a solo developer, a startup, or an enterprise, you can integrate Aana SDK into your projects worry-free. No hidden fees, no compulsory code sharing. Use it for personal projects, open-source work, or commercial applications - it's up to you.
+					</dd>
+					</dl>
+
+					<p>By open-sourcing Aana SDK under these terms, we're inviting you to join us in pushing the boundaries of multimodal AI.</p>
+
+					
+
+
 					<h2 id="future">Thoughts for Future</h2>
 
-					<p>While Aana is still in development, we're excited to share this powerful tool with the community. We believe it will significantly simplify the process of bringing machine learning models into production environments.
+					<p>While GenAI models grow more complex, we focus on making them smaller, faster, and more scalable. Our notable projects include Extreme Quantization (See <a href="https://mobiusml.github.io/hqq_blog/">https://mobiusml.github.io/hqq_blog/</a> and <a href="https://mobiusml.github.io/1bit_blog/">https://mobiusml.github.io/1bit_blog/</a>) and Fast Kernels(See <a href="https://mobiusml.github.io/whisper-static-cache-blog/">https://mobiusml.github.io/whisper-static-cache-blog/</a> and coming soon: Faste CUDA dequantization kernels)</p>
+			
+					<p>We envision highly capable, scalable AI applications with minimal computational overhead, anticipating growth in multimodal applications from advanced search to personalized experiences and rich analytics. Emerging trends include enhanced multimodal capabilities, agentic workflows, and embodied intelligence. On-device AI is expected to be a major trend, enabling real-time, privacy-preserving applications.
 					</p>
 
-					<p>We invite developers, data scientists, and ML engineers to explore Aana, contribute to its development, and provide feedback. Together, we can push the boundaries of what's possible in multimodal application development.</p>
-
 					<p>Visit our GitHub repository <a href="https://github.com/mobiusml/aana_sdk">https://github.com/mobiusml/aana_sdk</a> to get started with Aana today. Join us in shaping the future of machine learning deployment and application development!</p>
-
-
-
-
-
-
-
-					
-		
-
-					
 
 
 					
