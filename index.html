@@ -1,0 +1,275 @@
+<html>
+<!DOCTYPE html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script>
+		function copyCode() {
+		  const codeElement = document.querySelector('pre code');
+		  const codeText = codeElement.innerText;
+		  navigator.clipboard.writeText(codeText);
+		  // Optionally provide user feedback, e.g., changing the button text
+		}
+	  </script>
+	  
+		<!-- <script>
+			function toggleContent() {
+				var content = document.getElementById("content");
+				var button = document.getElementById("toggle-button");
+
+				button.addEventListener("click", function() {
+					if (content.style.display === "none" || content.style.display === "") {
+						content.style.display = "block";
+						button.textContent = "-";
+					} else {
+						content.style.display = "none";
+						button.textContent = "+";
+					}
+				});
+			}
+			</script> -->
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js"></script> -->
+
+	<title>Introducing Aana SDK</title>
+	<link rel="stylesheet" type="text/css" href="styling.css">
+	<link rel="icon" type="image/png" href="figs/aana_logo.png">	
+	<link rel="stylesheet" href="https://use.typekit.net/pnf5khj.css">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'> -->
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+	<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"> -->
+
+
+	<meta name="description" content=" Introducing Aana: The Open-Source Powerhouse for Multimodal Applications">
+
+	<meta name="keywords"
+		content="Multimodal models, Aana, SDK, Open Source, Multimodal, Ray, Scale, GenAI">
+
+
+	<!-- Specific tags for Open Graph / social media sharing -->
+	<meta property="og:title" content="Introducing Aana: The Open-Source Powerhouse for Multimodal Applications">
+	<meta property="og:description"
+		content="Launch blog of Aana SDK.">
+	<meta property="og:image" content="https://mobiusml.github.io/batched_whisper_blog/figs/aana_whisper_hqq_compile.png">
+	<meta property="og:url" content="https://mobiusml.github.io/batched_whisper_blog/">
+	<meta property="og:type" content="article">
+
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Introducing Aana: The Open-Source Powerhouse for Multimodal Applications">
+	<meta name="twitter:description"
+		content="Launch blog of Aana SDK.">
+	<meta name="twitter:image" content=https://mobiusml.github.io/batched_whisper_blog/figs/aana_whisper_hqq_compile.png">
+	<meta name="twitter:creator" content="@appughar">
+
+	<!-- Meta tags for article publishing date and modification date -->
+	<meta name="article:published_time" content="2024-03-27T08:00:00+00:00">
+	<meta name="article:modified_time" content="2024-03-27T09:00:00+00:00">
+</head>
+
+<body>
+	<article id="speeding up whisper" class="page sans">
+		<header>
+			<h1 class="page-title">Introducing Aana SDK: Open-Source SDK Empowering the Future of Multimodal AI Applications</h1>
+
+		</header>
+		<div class="page-body">
+			<p>
+				<a href="https://www.linkedin.com/in/aleksandr-movchan/?originalSubdomain=de">
+					<mark class="highlight-gray">Aleksandr Movchan</mark>
+				</a>,
+				<a href="https://www.linkedin.com/in/hossein-rashidi/">
+					<mark class="highlight-gray">Hossein Rashidi</mark>
+				</a>,
+				<a href="https://www.linkedin.com/in/deriel/">
+					<mark class="highlight-gray">Evan de Riel</mark>
+				</a>,
+				<a href="https://www.linkedin.com/in/deriel/">
+					<mark class="highlight-gray">Evan de Riel</mark>
+				</a>,
+				<a href="https://www.linkedin.com/in/ashwinnairanilil/">
+					<mark class="highlight-gray">Ashwin Nair Anilil</mark>
+				</a>,
+				<a href="https://www.linkedin.com/in/appughar/">
+					<mark class="highlight-gray">Appu Shaji</mark>
+				</a>
+			</p>
+			<p>
+				<mark class="highlight-gray"><a href="https://www.mobiuslabs.com/">Mobius Labs GmbH</mark></a>
+			</p>
+			<hr />
+			<h2 id="intro" class="">Introduction</h2>
+
+			<p>The landscape of Artificial Intelligence is rapidly evolving, and at the forefront of this revolution is multimodal AI. As we stand on the cusp of a new era in technology, it's becoming increasingly clear that multimodal AI will be a cornerstone of the Generative AI stack. The ability to process and understand multiple types of data - text, images, audio, and video - simultaneously is opening doors to a new class of applications that were once the stuff of science fiction.</p>
+
+			<p>At Mobius Labs, we recognize that the future belongs to those who can harness the power of these emerging multimodal models. However, we also understand the challenges that come with this new frontier. Managing diverse inputs, scaling Generative AI applications, and ensuring extensibility are major hurdles that developers face today. That's why we're thrilled to announce the release of Aana, our open-source SDK designed to address these challenges head-on.
+			</p>
+
+			<!-- <div class="column-list">
+				<div style="width:49%" class="column">
+					<div class="caption">Baseline</div>
+					<img src="figs/transcription_speed_default_opt.gif" />
+					
+				</div>
+				<div style="width:49%" class="column">
+					<div class="caption">Torch Compile + HQQ</div> 
+					<img src="figs/transcription_compile_hqq_opt.gif" />					
+				</div>
+
+			</div>
+		
+			<p>In this blog post, we explain the techniques we used to enhance the performance of the PyTorch based Whisper models. By leveraging transformers, implementing a <a href"https://github.com/huggingface/transformers/pull/30760"> static cache</a>, and utilizing <a href="https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html">torch.compile</a>, we significantly accelerated the model's inference speed. Additionally, we employed <a href="https://github.com/mobiusml/hqq">HQQ</a> to quantize the Whisper models to 4 bits, preserving transcription quality with minimal degradation, as evaluated by Word Error Rate (WER) benchmarks. Our optimizations resulted in a <b>4.5x</b> speedup for non-quantized models and an impressive <b>6x</b> speedup for quantized models.  Moreover, we report detailed quantization results and found that Whisper can be run in extremely low-bit configurations.</p>
+
+			
+	
+
+			<p>Furthermore, we provide benchmarks across various Automatic Speech Recognition (ASR) datasets to demonstrate the effectiveness of our optimizations. This post will delve into the methods and processes behind these improvements, providing insights into the power of optimized kernels and quantization.</p> -->
+
+
+
+
+				
+			<hr id="header_seperator" />
+			<div class="column-list">
+				<div style="width:32%" class="column">
+					<!-- <p class="page-description"><img src="./baby_aana.png" /></p> -->
+					<figure class="image" style="text-align:left"><a href="figs/aana_whisper_hqq_compile.png"><img style="width:240px"
+								src="figs/aana_whisper_hqq_compile.png" /></a>
+					</figure>
+					<p>
+						<strong>Table of Contents</strong>
+					</p>
+					<nav class="block-color-gray table_of_contents">
+						<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+								href="#intro">Introduction</a></div>
+						<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+								href="#speed">Building Production Applications Rapidly</a>	
+						</div>						
+						<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+							href="challenges">Key Challenges</a>	
+						</div>						
+						<div class="table_of_contents-item table_of_contents-indent-0"><a
+							class="table_of_contents-link" href="#benchmarks">Design Philosophy</a>
+						</div>						
+						<div class="table_of_contents-item table_of_contents-indent-0"><a
+								class="table_of_contents-link" href="#future">Future</a>
+						</div>
+
+						<hr />
+
+						<p><strong>Code</strong></p>
+						<a target="_blank" href="https://github.com/mobiusml/aana_sdk">
+							<img src="https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png" alt="Open In Github"/ height="12">
+						  </a>
+
+						<p><strong> Talk to us at </strong></p>
+						<a href="https://discord.gg/zyZmwqQW"><img
+							src="https://icons.iconarchive.com/icons/bootstrap/bootstrap/48/Bootstrap-discord-icon.png"
+							width="24"></a>
+						<a href="https://twitter.com/Mobius_Labs"><img
+							src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/450px-X_logo_2023.svg.png"
+							width="24"></a>
+					
+						<hr />
+							
+						
+					</nav>
+
+				</div>
+				<div style="width:75%" class="column">
+			
+					
+					<h2 id="speed" class="">The Need for Speed and Flexibility</h2>
+					<p>With new multimodal models being released at an unprecedented pace, the ability to rapidly prototype and deploy new applications is not just an advantage - it's a necessity. Aana was born out of this urgent need. We built it to empower developers, data scientists, and ML engineers to keep pace with the rapidly evolving AI landscape.</p>
+
+					<p>Aana simplifies the complex process of integrating multiple AI models, managing various data types, and scaling applications efficiently. It's designed to be the bridge between cutting-edge AI research and practical, deployable Enterprise grade applications.</p>
+
+					<h2 id="challenges">Addressing Key Challenges</h2>
+						<ol>
+							<li>Managing Multimodal Inputs: Aana provides a unified framework for handling diverse data types, from text and images to audio and video, making it easier to build truly multimodal applications.
+							</li>
+							<li>Scaling Generative AI: Built on top of Ray, a distributed computing framework, Aana allows your applications to scale seamlessly from a single machine to a cluster, ensuring that your Generative AI models can handle increasing loads.</li>
+							<li>Extensibility: We've designed Aana with the future in mind. Its modular architecture and extensive integration capabilities mean that as new models and technologies emerge, you can easily incorporate them into your existing applications.</li>
+						</ol>
+
+					<h2 id="hilosophy">Design Philosophy</h2>
+					<p>To address these challenges and create a truly useful tool for the AI community, we built Aana on four core principles</p>
+					
+					<ol>
+					<li>Reliability: In the world of AI applications, robustness is key. Aana is designed to be fault-tolerant, gracefully handling the unexpected.</li>
+					Scalability: From prototype to production, Aana grows with your needs, leveraging distributed computing to scale across multiple servers effortlessly.</li>
+					<li>Efficiency: We've optimized Aana for speed and resource utilization, ensuring that you get the most out of your hardware.</li>
+					<li>Ease of Use: Complex doesn't have to mean complicated. Aana's modular design, with extensive automation and abstraction, makes it accessible to developers of all skill levels.</li>
+					</ol>
+
+					<h2 id="future">Thoughts for Future</h2>
+
+					<p>While Aana is still in development, we're excited to share this powerful tool with the community. We believe it will significantly simplify the process of bringing machine learning models into production environments.
+					</p>
+
+					<p>We invite developers, data scientists, and ML engineers to explore Aana, contribute to its development, and provide feedback. Together, we can push the boundaries of what's possible in multimodal application development.</p>
+
+					<p>Visit our GitHub repository <a href="https://github.com/mobiusml/aana_sdk">https://github.com/mobiusml/aana_sdk</a> to get started with Aana today. Join us in shaping the future of machine learning deployment and application development!</p>
+
+
+
+
+
+
+
+					
+		
+
+					
+
+
+					
+					<h2 id="citations">Citation</h2>
+					<div>								
+					<pre><code style="background-color: #fff; color: #777;" >
+@misc{movchan2024aanasdk,
+title = {Introducing Aana SDK: Open-Source SDK Empowering the Future of Multimodal AI Applications},
+url = {https://mobiusml.github.io/aana-sdk-introducing-blog},
+author = {Aleksandr Movchan, Hossein Rashidi, Evan de Riel, Ashwin Nair Anilil and Appu Shaji},
+month = {June},
+year = {2024}
+}
+					</code></pre>
+							</div>
+
+
+							<div>
+								<p style="text-align: center;">Please feel free to <a
+										href="mailto:it@mobiuslabs.com">contact us.</a></p>
+								<!--                             <p style="text-align: center; color:hotpink;">Check out our other blog post</p> -->
+
+							</div>
+
+				</div>
+
+
+
+
+			</div>
+			<p id="d9be7859-86c8-4e9e-8957-b0127ad9431d" class="">
+			<div class="indented">
+				<p id="7b0d7f13-0909-4e80-97fe-e0102053cc62" class="">
+				</p>
+			</div>
+			</p>
+		</div>
+	</article>
+</body>
+
+</html>
